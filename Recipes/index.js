@@ -11,7 +11,7 @@ app.engine('hbs', exphbs.engine({
 
 app.set('view engine', 'hbs')
 
-app.get('/', async (req, res) => {
+app.get('/recipes', async (req, res) => {
     const client = new mongodb.MongoClient("mongodb://127.0.0.1")
     await client.connect()
 
@@ -28,9 +28,9 @@ app.get('/', async (req, res) => {
     res.render('home', {recipes})
 })
 
-app.get('/recipes/:id', async (req, res) =>{
+app.post('/recipes/:id', async (req, res) =>{
     const _id = new mongodb.ObjectId(req.params.id)
-    const client = new mongodb.MongoClient("mongodb://127.0.0.1")
+    const client = new mongodb.MongoClient("mongodb://127.0.0.1:27017")
      client.connect()
 
     const db = client.db("MyRecipeDB")
