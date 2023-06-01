@@ -35,8 +35,9 @@ app.get('/recipes/:id', async (req, res) =>{
 
     const db = client.db("MyRecipeDB")
 
-    db.collection("Recipes").findOne({_id: _id}, (err, recipe) => {
-        res.render('recipe', {recipe})
+    db.collection("Recipes").findOneAndUpdate({_id: _id}, (err, recipe) => {
+       res.render('recipe', {recipe})
+    
     })
 })
 app.listen(8000, () => {
