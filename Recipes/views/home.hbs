@@ -1,7 +1,7 @@
 <h2>Recipes</h2>
-<a href="/recipes/:id"><button>Create</button></a>
+<a href="/recipes/new">Create</a>
 {{#each recipes}}
- <p><strong>{{Title}}</strong></p><br>
+ <p><strong>{{Title}}</strong></p>
  <p> {{Summary}} (Minutes: {{Minutes}})</p>
- 
+ <hr>
 {{/each}}
