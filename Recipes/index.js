@@ -24,7 +24,7 @@ app.get('/recipes', async (req, res) => {
     const dbRecipes = db.collection("Recipes").find()
     const recipes = await dbRecipes.toArray()
 
-    res.render('home', { recipes })
+    res.render('recipes', { recipes })
 })
 
 app.get('/recipes/new', async (req, res) => {
