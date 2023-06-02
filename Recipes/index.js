@@ -26,7 +26,7 @@ app.get('/recipes', async (req, res) => {
 
     res.render('home', { recipes })
 })
-//Show form to add new recipe
+
 app.get('/recipes/new', async (req, res) => {
     res.render('new')
 })
@@ -45,6 +45,23 @@ app.post('/recipes/new', async (req, res) =>{
   await db.collection("Recipes").insertOne(recipe);
   res.redirect('/recipes')
 })
+app.get('/recipes/:id', async (req, res) => {
+     res.render('delete')
+ 
+})
+app.delete('/recipes/:id', async (req, res) => {
+    const _id = new mongodb.ObjectId(req.params.id)
+    const client = new mongodb.MongoClient("mongodb://127.0.0.1:27017")
+    await client.connect()
+    const db = client.db("MyRecipeDB")
+  
+    db.collection("Recipes").deleteOne({_id: _id} , (err, recipe) => {
+        res.send('Recipe is deleted', {recipe})
+ 
+     })
+})
+
+
 app.listen(8000, () => {
     console.log("http://127.0.0.1:8000/");
 })
