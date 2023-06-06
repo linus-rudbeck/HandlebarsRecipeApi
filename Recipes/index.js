@@ -45,20 +45,24 @@ app.post('/recipes/new', async (req, res) =>{
   await db.collection("Recipes").insertOne(recipe);
   res.redirect('/recipes')
 })
+
 app.get('/recipes/:id', async (req, res) => {
-     res.render('delete')
- 
+    res.render('delete')
 })
+
 app.delete('/recipes/:id', async (req, res) => {
+    console.log("hello");
     const _id = new mongodb.ObjectId(req.params.id)
     const client = new mongodb.MongoClient("mongodb://127.0.0.1:27017")
     await client.connect()
+   
     const db = client.db("MyRecipeDB")
   
-    db.collection("Recipes").deleteOne({_id: _id} , (err, recipe) => {
-        res.send('Recipe is deleted', {recipe})
- 
-     })
+  db.collection("Recipes").deleteOne({_id: _id}, () => {
+    res.redirect("/recipes")
+   })
+
+
 })
 
 

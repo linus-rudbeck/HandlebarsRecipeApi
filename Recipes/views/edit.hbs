@@ -1,0 +1,26 @@
+ <form class="form" action="/recipes/:id" method="post">
+   <input class="input" type="text" name="title" placeholder="Title"/><br>
+   <textarea class="text" name="summary" placeholder="Summary"></textarea> <br>
+   <input class="input" type="number" name="minutes" placeholder="Minutes"> <br>
+   <input class="input"type="submit" value="Save">
+ </form>
+ <style>
+    .form {
+        display: flex; 
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    .input {
+        padding: 8px 16px;
+        width: 300px; 
+        height: 40px;
+        border-radius: 4px;
+    }
+    .text {
+        padding: 8px 16px;
+        width: 300px; 
+        border-radius: 4px;
+        height: 80px;
+    }
+ </style>
